@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gråpus – Verdens søteste katt</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f5f5, #dcdcdc);
+      text-align: center;
+    }
+
+    header {
+      background: #666;
+      color: white;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    img.cat {
+      width: 280px;
+      border-radius: 20px;
+      margin: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    img.cat:hover {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ff9f43;
+      color: white;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background: #ff7b00;
+    }
+
+    .speech {
+      font-size: 1.3rem;
+      margin-top: 20px;
+      min-height: 40px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: #444;
+      color: white;
+    }
+
+    .rain {
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🐱 Gråpus 🐱</h1>
+    <p>Den legendariske katten Gråpuf</p>
+  </header>
+
+  <div class="container">
+
+    <h2>Møt Gråpus</h2>
+    <p>Gråpus er en ekstremt fluffy katt som elsker kos, kaos og mystiske løp klokken 03:17.</p>
+
+    <img src="images/image.png" class="cat" onclick="meow()" />
+    <img src="images/1.jpg" class="cat" onclick="meow()" />
+
+    <h2>Morsomme funksjoner</h2>
+
+    <button onclick="meow()">😺 Mjau!</button>
+    <button onclick="randomFact()">📘 Gråpus-fakta</button>
+    <button onclick="catParty()">🎉 Kattefest</button>
+    <button onclick="catRain()">🐟 Fiskeregn</button>
+
+    <div class="speech" id="speech"></div>
+
+  </div>
+
+  <footer>
+    © 2026 Gråpus Fanclub – 100 % seriøs katteside
+  </footer>
+
+  <script>
+    const facts = [
+      "Gråpus tror han eier huset.",
+      "Gråpus kan høre en matpose på 3 km avstand.",
+      "Gråpus har aldri tapt en kamp mot en laserpeker (ifølge ham selv).",
+      "Gråpus sover 18 timer – minimum.",
+      "Gråpus er 70 % pels, 30 % attitude."
+    ];
+
+    function meow() {
+      const sounds = ["Mjau! 😸", "Mrrrr 😼", "MIAU!! 😾", "Prrr 😺"];
+      document.getElementById("speech").innerText = sounds[Math.floor(Math.random() * sounds.length)];
+    }
+
+    function randomFact() {
+      document.getElementById("speech").innerText = facts[Math.floor(Math.random() * facts.length)];
+    }
+
+    function catParty() {
+      document.body.style.background = `hsl(${Math.random() * 360}, 80%, 85%)`;
+      document.getElementById("speech").innerText = "🎉 GRÅPUS HAR FEST 🎉";
+    }
+
+    function catRain() {
+      for (let i = 0; i < 20; i++) {
+        const drop = document.createElement("div");
+        drop.className = "rain";
+        drop.innerText = "🐟";
+        drop.style.left = Math.random() * 100 + "vw";
+        drop.style.animationDuration = 2 + Math.random() * 3 + "s";
+        document.body.appendChild(drop);
+
+        setTimeout(() => drop.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
